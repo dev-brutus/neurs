@@ -31,8 +31,12 @@ class Perceptron(val neuronsPerLayer: List[IndexedSeq[Symbol]], injectedWeights:
 
   def apply(initValues: Map[Symbol, Double]) = {
     val networkValues = neuronsByOrder.foldLeft(initValues) { (acc, neuron) =>
-      val neuronValue: Double = toFrom(neuron).view.map(synapse => weights(synapse) * acc(synapse._1)).sum
-      acc + (neuron -> neuronValue)
+      acc.contains(neuron) match {
+        case true => acc
+        case false =>
+          val neuronValue: Double = toFrom(neuron).view.map(synapse => weights(synapse) * acc(synapse._1)).sum
+          acc + (neuron -> neuronValue)
+      }
     }
 
     lastLayerNeurons.view.map(neuron => neuron -> networkValues(neuron)).toMap
