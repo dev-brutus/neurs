@@ -9,7 +9,7 @@ class Perceptron(val neuronsPerLayer: List[IndexedSeq[Symbol]], injectedWeights:
 
   def this(layers: Iterable[Int]) {
     this(layers.view.zipWithIndex.map { layer =>
-      (0 until layer._1).map(l => Symbol(s"${layer._2}_$l"))
+      (0 until layer._1).map(l => Symbol(s"${Base26(layer._2)}$l"))
     }.toList)
   }
 
