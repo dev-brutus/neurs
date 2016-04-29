@@ -14,6 +14,15 @@ object AppImpl extends App {
     ('a1,'b2) -> 0.5,
     ('a1,'b1) -> 0.0,
     ('a1,'b0) -> 0.0
+  )).changeWeights(Map(
+    ('b0,'c1) -> 0,
+    ('b0,'c2) -> 0,
+    ('b1,'c2) -> 0,
+    ('b2,'c0) -> 0,
+    ('b2,'c2) -> 0,
+    ('b3,'c0) -> 0,
+    ('b4,'c0) -> 0,
+    ('b4,'c1) -> 0
   ))
 
   println(perceptron)
