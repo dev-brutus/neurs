@@ -30,14 +30,14 @@ class Perceptron(val neurons: Iterable[Symbol], val weights: Map[(Symbol, Symbol
 
 object Perceptron {
 
-  def apply(layers: Iterable[Int]) = {
+  def apply(layers: Iterable[Int]): Perceptron = {
     val neuronsByLayer = layers.view.zipWithIndex.map { layer =>
       (0 until layer._1).map(l => Symbol(s"${Base26(layer._2)}$l"))
     }.toList
-    apply(neuronsByLayer, Map.empty())
+    apply(neuronsByLayer, Map.empty)
   }
 
-  def apply(neuronsPerLayer: Seq[IndexedSeq[Symbol]], injectedWeights: Map[(Symbol, Symbol), Double) = {
+  def apply(neuronsPerLayer: Seq[IndexedSeq[Symbol]], injectedWeights: Map[(Symbol, Symbol), Double]): Perceptron = {
 
     val weights: Map[(Symbol, Symbol), Double] = {
       neuronsPerLayer.sliding(2).flatMap { pair =>

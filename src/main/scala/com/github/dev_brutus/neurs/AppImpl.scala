@@ -3,7 +3,7 @@ package com.github.dev_brutus.neurs
 import com.github.dev_brutus.neurs.network.{Base26, Perceptron}
 
 object AppImpl extends App {
-  private val perceptron = new Perceptron(Seq(2, 5, 3)).changeWeights(Map(
+  private val perceptron = Perceptron(Seq(2, 5, 3)).changeWeights(Map(
     ('a0,'b0) -> 1.0,
     ('a0,'b1) -> 0.8,
     ('a0,'b2) -> 0.5,
