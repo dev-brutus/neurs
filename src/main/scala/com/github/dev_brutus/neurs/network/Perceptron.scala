@@ -7,7 +7,7 @@ import scala.collection.immutable.IndexedSeq
   */
 class Perceptron(val neurons: Iterable[Symbol], val weights: Map[(Symbol, Symbol), Double], val outputNeurons: Iterable[Symbol]) {
 
-  val toFrom = weights.keys.groupBy(_._2)
+  val toFrom: Map[Symbol, Iterable[(Symbol, Symbol)]] = weights.keys.groupBy(_._2)
 
   def apply(initValues: Map[Symbol, Double]) = {
     val networkValues = neurons.foldLeft(initValues) { (acc, neuron) =>
